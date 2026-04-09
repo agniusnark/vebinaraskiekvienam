@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Sprendimai Kiekvienam — Praktinis Vebinaras</title>
+  <meta name="description" content="Praktinis vebinaras apie AI įrankius kiekvienam žmogui. Sužinokite kaip AI gali dirbti už jus kasdienėje veikloje.">
+  <meta property="og:title" content="AI Sprendimai Kiekvienam — Praktinis Vebinaras">
+  <meta property="og:description" content="Vebinaras po kurio AI dirbs Jums kasdienėje veikloje. Gegužės 3 d., 18:00.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aievoliucija.lt/vebinaraskiekvienam">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd',
+              400: '#60a5fa', 500: '#2563eb', 600: '#1d4ed8', 700: '#1e40af',
+              800: '#1e3a8a', 900: '#1e3a5f'
+            },
+            navy: { DEFAULT: '#0c1445', light: '#111b54', dark: '#080e30' },
+            cream: '#f8f5f0'
+          },
+          fontFamily: {
+            heading: ['Inter', 'sans-serif'],
+            body: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: #1a1a2e; overflow-x: hidden; }
+
+    /* --- Gradient text --- */
+    .gradient-text {
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .gradient-text-light {
+      background: linear-gradient(135deg, #60a5fa, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* --- Background patterns --- */
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(37,99,235,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,0.08) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .dot-bg {
+      background-image: radial-gradient(circle, rgba(12,20,69,0.15) 1.2px, transparent 1.2px);
+      background-size: 28px 28px;
+    }
+
+    /* --- CTA button --- */
+    .cta-btn {
+      display: inline-block;
+      padding: 18px 40px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 8px 32px rgba(37,99,235,0.35), 0 2px 8px rgba(37,99,235,0.2);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      border: none;
+      text-align: center;
+    }
+    .cta-btn::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      animation: cta-shimmer 3s infinite;
+    }
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(37,99,235,0.45), 0 4px 12px rgba(37,99,235,0.3);
+    }
+    .cta-btn:active { transform: translateY(0) scale(0.98); }
+
+    .cta-btn-white {
+      background: #fff;
+      color: #0c1445;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .cta-btn-white:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .cta-btn-white::after {
+      background: linear-gradient(90deg, transparent, rgba(37,99,235,0.1), transparent);
+    }
+
+    .cta-btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.3);
+      box-shadow: none;
+    }
+    .cta-btn-outline:hover {
+      border-color: rgba(255,255,255,0.6);
+      box-shadow: 0 8px 32px rgba(37,99,235,0.2);
+    }
+    .cta-btn-outline::after { display: none; }
+
+    /* --- Animations --- */
+    @keyframes cta-shimmer {
+      0% { left: -100%; }
+      50%, 100% { left: 100%; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(37,99,235,0.4); }
+      70% { box-shadow: 0 0 0 12px rgba(37,99,235,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes count-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.12s; }
+    .delay-2 { transition-delay: 0.24s; }
+    .delay-3 { transition-delay: 0.36s; }
+    .delay-4 { transition-delay: 0.48s; }
+    .delay-5 { transition-delay: 0.60s; }
+
+    /* --- Cards --- */
+    .glass-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .glass-card:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.14);
+      transform: translateY(-4px);
+    }
+
+    .light-card {
+      background: #fff;
+      border: 1px solid #f0f0f0;
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .light-card:hover {
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+      transform: translateY(-4px);
+    }
+
+    /* --- Pricing card glow --- */
+    .pricing-pro {
+      position: relative;
+      border: 2px solid rgba(37,99,235,0.5);
+      box-shadow: 0 0 40px rgba(37,99,235,0.15), 0 8px 32px rgba(0,0,0,0.2);
+    }
+    .pricing-pro::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px; right: -1px; bottom: -1px;
+      border-radius: 21px;
+      background: linear-gradient(135deg, rgba(37,99,235,0.3), rgba(6,182,212,0.15), transparent);
+      z-index: -1;
+      filter: blur(8px);
+    }
+
+    /* --- Countdown --- */
+    .countdown-box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 12px 16px;
+      min-width: 72px;
+      text-align: center;
+    }
+    .countdown-number {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1;
+      color: #fff;
+    }
+    .countdown-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+    }
+
+    /* --- FAQ --- */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .faq-question:hover { color: #60a5fa; }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), padding 0.3s;
+      padding: 0;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+      padding-bottom: 20px;
+    }
+    .faq-chevron {
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+    /* --- Video container --- */
+    .video-container {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(37,99,235,0.15), 0 2px 8px rgba(0,0,0,0.08);
+      border: 3px solid rgba(37,99,235,0.3);
+      position: relative;
+      background: #0c1445;
+    }
+    .video-container .video-placeholder {
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* --- Sticky bar --- */
+    .sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(12,20,69,0.95);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      padding: 12px 24px;
+    }
+    .sticky-bar.visible { transform: translateY(0); }
+
+    /* --- Nav --- */
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 16px 24px;
+      transition: all 0.3s;
+    }
+    .nav-bar.scrolled {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      padding: 12px 24px;
+    }
+    .nav-bar.scrolled .nav-logo { color: #0c1445; }
+    .nav-bar.scrolled .nav-cta {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+    }
+
+    /* --- Exit popup --- */
+    .exit-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .exit-overlay.active { display: flex; }
+    .exit-popup {
+      background: #fff;
+      border-radius: 24px;
+      padding: 40px;
+      max-width: 480px;
+      width: 100%;
+      position: relative;
+      animation: fadeUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .exit-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: #f3f4f6;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #6b7280;
+      transition: all 0.2s;
+    }
+    .exit-close:hover { background: #e5e7eb; color: #1a1a2e; }
+
+    /* --- Value stack --- */
+    .value-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .value-row:last-child { border-bottom: none; }
+    .value-price {
+      color: rgba(255,255,255,0.4);
+      text-decoration: line-through;
+      font-size: 14px;
+    }
+
+    /* --- Decorative blobs --- */
+    .blob-blue {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.12), transparent 70%);
+      pointer-events: none;
+    }
+    .blob-cyan {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6,182,212,0.10), transparent 70%);
+      pointer-events: none;
+    }
+
+    /* --- Persona icon bgs --- */
+    .persona-blue { background: #dbeafe; }
+    .persona-pink { background: #fce7f3; }
+    .persona-green { background: #d1fae5; }
+    .persona-amber { background: #fef3c7; }
+    .persona-indigo { background: #e0e7ff; }
+    .persona-cyan { background: #cffafe; }
+
+    /* --- Guarantee --- */
+    .guarantee-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(34,197,94,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* --- Badge --- */
+    .badge-popular {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 6px 20px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    /* --- Learn items --- */
+    .learn-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px 20px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.3s;
+    }
+    .learn-item:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.1);
+    }
+    .learn-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(37,99,235,0.15);
+      border-radius: 12px;
+    }
+
+    /* --- Check list for pricing --- */
+    .check-item {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 6px 0;
+    }
+    .check-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .check-icon-blue { background: rgba(37,99,235,0.15); color: #60a5fa; }
+    .check-icon-green { background: rgba(34,197,94,0.15); color: #22c55e; }
+
+    @media (max-width: 640px) {
+      .cta-btn { padding: 16px 28px; font-size: 13px; }
+      .countdown-box { min-width: 60px; padding: 10px 12px; }
+      .countdown-number { font-size: 22px; }
+    }
+  </style>
+
+  <!-- META PIXEL — Replace with your pixel code -->
+  <!-- <script>...</script> -->
+
+  <!-- MAILERLITE — Universal tracking snippet -->
+  <!-- Step 1: Create an embedded form in MailerLite dashboard -->
+  <!-- Step 2: Replace YOUR_ACCOUNT_ID below with your MailerLite account ID -->
+  <!-- Step 3: Replace YOUR_FORM_ID in the exit popup div below -->
+  <script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},
+    l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', 'YOUR_ACCOUNT_ID');
+  </script>
+  <!-- END MAILERLITE -->
+</head>
+<body class="bg-white">
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav-bar" id="navbar">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="https://aievoliucija.lt" class="nav-logo text-white font-bold text-lg tracking-tight transition-colors">
+        AI Evoliucija
+      </a>
+      <a href="#kainos" class="nav-cta cta-btn" style="padding: 10px 20px; font-size: 12px;">
+        Registruotis
+      </a>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="relative pt-28 pb-20 md:pt-36 md:pb-28 px-6 hero-grid overflow-hidden">
+    <!-- Decorative blobs -->
+    <div class="blob-blue" style="top: -200px; left: -200px;"></div>
+    <div class="blob-cyan" style="bottom: -150px; right: -150px;"></div>
+    <!-- Decorative circle -->
+    <div class="absolute hidden md:block" style="top: 120px; right: 60px; width: 220px; height: 220px; border-radius: 50%; border: 2px solid rgba(37,99,235,0.15); opacity: 0.6;"></div>
+
+    <div class="max-w-3xl mx-auto text-center relative z-10">
+      <!-- Date badge -->
+      <div class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-brand-50 border border-brand-100 text-brand-600 text-sm font-semibold">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5.333 1.333v1.334M10.667 1.333v1.334M2 6.667h12M3.333 2.667h9.334c.736 0 1.333.597 1.333 1.333v9.333c0 .737-.597 1.334-1.333 1.334H3.333A1.333 1.333 0 012 13.333V4c0-.736.597-1.333 1.333-1.333z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Gegužės 3 d., 18:00
+      </div>
+
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-navy mb-6">
+        Jūs vis dar naudojate ChatGPT?
+        <span class="gradient-text">Yra kažkas daug geriau.</span>
+      </h1>
+
+      <!-- Micro-proof -->
+      <div class="flex flex-wrap justify-center gap-4 mb-6 text-sm font-medium text-gray-500">
+        <span class="inline-flex items-center gap-1.5">🏆 Claude — #1 AI aplikacija pasaulyje</span>
+        <span class="inline-flex items-center gap-1.5">🇱🇹 Pirmas vebinaras lietuviškai</span>
+      </div>
+
+      <p class="text-lg md:text-xl text-gray-600 leading-relaxed mb-3 max-w-2xl mx-auto">
+        Per 2 valandas sužinosite kaip Claude AI per minutes padaro tai, kas jums užtrunka valandas — prezentacijas, lenteles, el. paštą, analizę
+      </p>
+      <p class="text-sm text-gray-400 mb-10 font-medium">
+        Nereikia IT žinių ar programavimo. Tik noras dirbti greičiau.
+      </p>
+
+      <!-- Video embed -->
+      <div class="video-container max-w-2xl mx-auto mb-10">
+        <div id="video-container" style="position:relative;padding-top:56.25%;">
+          <iframe src="https://iframe.mediadelivery.net/embed/633914/c1bd767c-00e0-489f-a4ca-a28afb40b813?autoplay=false&preload=true" loading="lazy" style="border:0;width:100%;height:100%;position:absolute;top:0;left:0;border-radius:12px;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <a href="#kainos" class="cta-btn text-base md:text-lg" style="padding: 20px 48px;">
+        Registruotis — Gegužės 3 d., 18:00
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ WHAT YOU'LL LEARN ============ -->
+  <section class="bg-navy py-20 md:py-28 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-black tracking-tight leading-[1.12] text-white mb-4 reveal">
+          Ko išmoksite <span class="gradient-text-light">vebinare?</span>
+        </h2>
+        <p class="text-gray-400 max-w-xl mx-auto reveal delay-1">
+          7 praktinės temos su gyvomis demonstracijomis. Viską pritaikysite tą pačią dieną.
+        </p>
+      </div>
+
+      <div class="grid gap-4 reveal delay-2">
+        <div class="learn-item">
+          <div class="learn-icon">⚔️</div>
+          <div>
+            <p class="text-white font-semibold mb-1">Claude vs ChatGPT — kodėl žmonės masiškai keičia</p>
+            <p class="text-gray-400 text-sm">ChatGPT pataikauja ir liejasi vandeniu. Claude atsako tiesiai, profesionaliai ir sąžiningai. Pamatysite skirtumą gyvai.</p>
+          </div>
+        </div>
+
+        <div class="learn-item">
+          <div class="learn-icon">🎯</div>
+          <div>
+            <p class="text-white font-semibold mb-1">Kaip kalbėti su AI kad gautum tai, ko nori</p>
+            <p class="text-gray-400 text-sm">Oficialus Anthropic metodas: aiškus kontekstas, konkretūs pavyzdžiai, tinkama rolė. Nuo „meh" rezultatų prie „wow" — per vieną sakinį.</p>
+          </div>
+        </div>
+
+        <div class="learn-item">
+          <div class="learn-icon">✨</div>
+          <div>
+            <p class="text-white font-semibold mb-1">Claude Artifacts — interaktyvūs dokumentai be programavimo</p>
+            <p class="text-gray-400 text-sm">Rašote tekstą — gaunate veikiančią prezentaciją, dashboard'ą arba interaktyvų įrankį. Tai, dėl ko žmonės nebegrįžta prie ChatGPT.</p>
+          </div>
+        </div>
+
+        <div class="learn-item">
+          <div class="learn-icon">⚙️</div>
+          <div>
+            <p class="text-white font-semibold mb-1">Cowork — AI asistentas, kuris dirba kartu su tavimi</p>
+            <p class="text-gray-400 text-sm">Anksčiau: rankiniu būdu tvarkei failus, rašei laiškus, rinkdavai informaciją. Dabar: pasaki ką nori — Claude padaro.</p>
+          </div>
+        </div>
+
+        <div class="learn-item">
+          <div class="learn-icon">📊</div>
+          <div>
+            <p class="text-white font-semibold mb-1">Prezentacijos, Excel, dokumentai per minutes</p>
+            <p class="text-gray-400 text-sm">Kolegos praleidžia 3 valandas su PowerPoint. Tu pasakysi Claude ką nori — ir gausi paruoštą rezultatą per 2 minutes.</p>
+          </div>
+        </div>
+
+        <div class="learn-item">
+          <div class="learn-icon">📧</div>
+          <div>
+            <p class="text-white font-semibold mb-1">El. paštas, planavimas ir kasdienės užduotys</p>
+            <p class="text-gray-400 text-sm">Inbox su 200 laiškų? Claude suskirstys, paruoš atsakymus ir suorganizuos darbo dieną — kol tu geri kavą.</p>
+          </div>
+        </div>
+
+        <div class="learn-item">
+          <div class="learn-icon">📸</div>
+          <div>
+            <p class="text-white font-semibold mb-1">Nuotraukų ir dokumentų analizė akimirksniu</p>
+            <p class="text-gray-400 text-sm">Įkelk čekį, sutartį ar nuotrauką — Claude mato, supranta ir išanalizuoja. Jokio perrašinėjimo ar skanavimo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo teaser -->
+      <div class="mt-10 text-center reveal delay-3">
+        <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full" style="background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.2);">
+          <span class="text-xl">🎬</span>
+          <p class="text-brand-300 text-sm font-medium">
+            Vebinare pamatysite kaip Claude per 2 minutes sukuria interaktyvų dashboardą su grafikais — iš paprastos Excel lentelės
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHO IS THIS FOR ============ -->
+  <section class="py-20 md:py-28 px-6 dot-bg relative">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-black tracking-tight leading-[1.12] text-navy mb-4 reveal">
+          Kam skirtas šis <span class="gradient-text">vebinaras?</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="light-card p-6 reveal">
+          <div class="w-12 h-12 rounded-xl persona-blue flex items-center justify-center text-2xl mb-4">💼</div>
+          <h3 class="font-bold text-navy mb-2">Verslininkams</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Norite optimizuoti procesus ir sutaupyti laiko kasdienėse užduotyse</p>
+        </div>
+
+        <div class="light-card p-6 reveal delay-1">
+          <div class="w-12 h-12 rounded-xl persona-green flex items-center justify-center text-2xl mb-4">👨‍💻</div>
+          <h3 class="font-bold text-navy mb-2">Darbuotojams</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Norite dirbti efektyviau ir išsiskirti darbo rinkoje su AI įgūdžiais</p>
+        </div>
+
+        <div class="light-card p-6 reveal delay-2">
+          <div class="w-12 h-12 rounded-xl persona-amber flex items-center justify-center text-2xl mb-4">🎓</div>
+          <h3 class="font-bold text-navy mb-2">Studentams</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Ieškote produktyvumo ir norite mokytis naudotis naujausiomis technologijomis</p>
+        </div>
+
+        <div class="light-card p-6 reveal delay-3">
+          <div class="w-12 h-12 rounded-xl persona-pink flex items-center justify-center text-2xl mb-4">🎨</div>
+          <h3 class="font-bold text-navy mb-2">Kūrėjams ir freelanceriams</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Kuriate turinį, dizainą ar tekstus ir norite pagreitinti darbo procesą</p>
+        </div>
+
+        <div class="light-card p-6 reveal delay-4">
+          <div class="w-12 h-12 rounded-xl persona-indigo flex items-center justify-center text-2xl mb-4">😤</div>
+          <h3 class="font-bold text-navy mb-2">Nusivylusiems ChatGPT</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Prašote ChatGPT, bet jis nuvilia, meluoja ar tiesiog bando įtikti?</p>
+        </div>
+
+        <div class="light-card p-6 reveal delay-5">
+          <div class="w-12 h-12 rounded-xl persona-cyan flex items-center justify-center text-2xl mb-4">🚀</div>
+          <h3 class="font-bold text-navy mb-2">Visiems, norintiems pradėti</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Norite pradėti naudoti AI praktiškai, bet nežinote nuo ko pradėti</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOCIAL PROOF ============ -->
+  <section class="py-20 md:py-28 px-6 dot-bg relative" style="background-color: #f8f5f0;">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Stats bar -->
+      <div class="text-center mb-6 reveal">
+        <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider mb-2">Kodėl Claude?</p>
+        <h2 class="text-3xl md:text-4xl font-black tracking-tight leading-[1.12] text-navy mb-12">
+          Ką Claude daro <span class="gradient-text">geriau už jus</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 reveal delay-1">
+        <div class="light-card p-6 text-center">
+          <div class="text-3xl md:text-4xl mb-3">⏱️</div>
+          <h4 class="text-navy font-bold mb-2">3 valandos → 15 minučių</h4>
+          <p class="text-gray-600 text-sm font-medium">Prezentacija klientui, ataskaita vadovui, pasiūlymas partneriui — Claude paruošia per kavos pertrauką</p>
+        </div>
+        <div class="light-card p-6 text-center">
+          <div class="text-3xl md:text-4xl mb-3">📧</div>
+          <h4 class="text-navy font-bold mb-2">200 laiškų → 10 atsakymų</h4>
+          <p class="text-gray-600 text-sm font-medium">Inbox chaosas? Claude perskaito, suskirsto pagal svarbą ir paruošia atsakymus — jums lieka tik paspausti „Send"</p>
+        </div>
+        <div class="light-card p-6 text-center">
+          <div class="text-3xl md:text-4xl mb-3">💼</div>
+          <h4 class="text-navy font-bold mb-2">1 žmogus = 3 žmonių komanda</h4>
+          <p class="text-gray-600 text-sm font-medium">Freelanceriams ir verslininkams: Claude rašo tekstus, tvarko dokumentus ir analizuoja duomenis — vienu metu</p>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- ============ VALUE STACK ============ -->
+  <section class="bg-navy py-20 md:py-28 px-6" id="kainos">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-black tracking-tight leading-[1.12] text-white mb-4 reveal">
+          Ką <span class="gradient-text-light">gausite?</span>
+        </h2>
+      </div>
+
+      <!-- Value stack card -->
+      <div class="glass-card p-8 md:p-10 mb-12 reveal">
+        <div class="value-row">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">🎓</span>
+            <span class="text-white font-medium">2 val. praktinis vebinaras su 7 gyvomis demonstracijomis</span>
+          </div>
+          <span class="value-price">€79</span>
+        </div>
+        <div class="value-row">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">📘</span>
+            <span class="text-white font-medium">PDF gidas su instrukcijomis ir promptais <span class="text-brand-400 text-xs font-semibold ml-1">PRO</span></span>
+          </div>
+          <span class="value-price">€29</span>
+        </div>
+        <div class="value-row">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">🎥</span>
+            <span class="text-white font-medium">Vebinaro įrašas — prieiga visam laikui <span class="text-brand-400 text-xs font-semibold ml-1">PRO</span></span>
+          </div>
+          <span class="value-price">€39</span>
+        </div>
+        <div class="value-row">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">⚡</span>
+            <span class="text-white font-medium">50+ promptų šablonų biblioteka <span class="text-brand-400 text-xs font-semibold ml-1">PRO</span></span>
+          </div>
+          <span class="value-price">€47</span>
+        </div>
+        <div class="value-row">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">👥</span>
+            <span class="text-white font-medium">Prieiga prie AI bendruomenės <span class="text-brand-400 text-xs font-semibold ml-1">PRO</span></span>
+          </div>
+          <span class="value-price">€19/mėn</span>
+        </div>
+        <div class="value-row">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">🔄</span>
+            <span class="text-white font-medium">Prieiga prie būsimų atnaujinimų <span class="text-brand-400 text-xs font-semibold ml-1">PRO</span></span>
+          </div>
+          <span class="value-price">€29</span>
+        </div>
+        <div class="value-row">
+          <div class="flex items-center gap-3">
+            <span class="text-xl">🎁</span>
+            <span class="text-white font-medium">Nuolaida būsimiems vebinarams ir kursams <span class="text-brand-400 text-xs font-semibold ml-1">PRO</span></span>
+          </div>
+          <span class="value-price">€∞</span>
+        </div>
+
+      </div>
+
+      <!-- Pricing cards -->
+      <div class="grid md:grid-cols-3 gap-6 reveal delay-1">
+        <!-- Tier 1: Basic -->
+        <div class="glass-card p-8 relative">
+          <div class="mb-6">
+            <h3 class="text-white font-bold text-xl mb-1">Vebinaras</h3>
+            <p class="text-gray-400 text-sm">Prieiga prie gyvo vebinaro</p>
+          </div>
+
+          <div class="mb-8">
+            <span class="text-5xl font-black text-white">€29</span>
+          </div>
+
+          <div class="space-y-3 mb-8">
+            <div class="check-item">
+              <div class="check-icon check-icon-blue">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="text-gray-300 text-sm">Gyvas vebinaras — gegužės 3 d., 18:00</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon check-icon-blue">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="text-gray-300 text-sm">2 val. praktinių demonstracijų</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon check-icon-blue">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="text-gray-300 text-sm">30 min. klausimų ir atsakymų sesija</span>
+            </div>
+          </div>
+
+          <a href="#checkout-29" class="cta-btn-outline cta-btn block text-center w-full">
+            Registruotis
+          </a>
+        </div>
+
+        <!-- Tier 2: PRO -->
+        <div class="glass-card pricing-pro p-8 relative">
+          <div class="badge-popular">Populiariausias</div>
+
+          <div class="mb-6 mt-2">
+            <h3 class="text-white font-bold text-xl mb-1">Vebinaras PRO</h3>
+            <p class="text-gray-400 text-sm">Viskas ko reikia AI kelionei pradėti</p>
+          </div>
+
+          <div class="mb-8">
+            <span class="text-white text-lg line-through opacity-40 mr-2">€99</span>
+            <span class="text-5xl font-black text-white">€49</span>
+          </div>
+
+          <div class="space-y-3 mb-8">
+            <div class="check-item">
+              <div class="check-icon check-icon-green">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="text-gray-300 text-sm">Viskas iš bazinio paketo</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon check-icon-green">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="text-white text-sm font-medium">PDF gidas su instrukcijomis ir promptais</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon check-icon-green">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="text-white text-sm font-medium">Vebinaro įrašas — prieiga visam laikui</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon check-icon-green">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="text-white text-sm font-medium">50+ promptų šablonų biblioteka</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon check-icon-green">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="text-white text-sm font-medium">Prieiga prie AI bendruomenės</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon check-icon-green">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="text-white text-sm font-medium">Nuolaida būsimiems vebinarams</span>
+            </div>
+          </div>
+
+          <a href="#checkout-49" class="cta-btn block text-center w-full">
+            Registruotis PRO
+          </a>
+        </div>
+
+        <!-- Tier 3: Workflow Audit -->
+        <div class="glass-card p-8 relative" style="background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(109,40,217,0.08)); border: 1px solid rgba(124,58,237,0.25);">
+          <div class="mb-6">
+            <h3 class="text-white font-bold text-xl mb-1">Darbo Proceso Auditas</h3>
+            <p class="text-gray-400 text-sm">Asmeninis AI diegimas Jūsų darbe</p>
+          </div>
+
+          <div class="mb-8">
+            <span class="text-5xl font-black text-white">€300</span>
+          </div>
+
+          <div class="space-y-3 mb-8">
+            <div class="check-item">
+              <div class="check-icon" style="background: rgba(168,85,247,0.15); color: #a855f7;">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="text-white text-sm font-medium">3 val. asmeninė sesija</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon" style="background: rgba(168,85,247,0.15); color: #a855f7;">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="text-white text-sm font-medium">Jūsų darbo procesų analizė ir optimizavimas</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon" style="background: rgba(168,85,247,0.15); color: #a855f7;">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="text-white text-sm font-medium">Individualus AI įrankių ir promptų rinkinys</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon" style="background: rgba(168,85,247,0.15); color: #a855f7;">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="text-white text-sm font-medium">Pagalba po sesijos (el. paštu)</span>
+            </div>
+          </div>
+
+          <a href="#checkout-300" class="cta-btn block text-center w-full flex items-center justify-center" style="background: linear-gradient(135deg, #7c3aed, #6d28d9);">
+            Rezervuoti auditą
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GUARANTEE ============ -->
+  <section class="bg-cream py-16 md:py-20 px-6">
+    <div class="max-w-2xl mx-auto text-center reveal">
+      <div class="guarantee-icon mx-auto mb-6">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </div>
+      <h3 class="text-2xl font-bold text-navy mb-3">100% pinigų grąžinimo garantija</h3>
+      <p class="text-gray-600 leading-relaxed">
+        Jei po vebinaro jausite, kad negavote jokios vertės — grąžinsime 100% pinigų per 7 dienas. Be jokių klausimų.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT INSTRUCTOR ============ -->
+  <section class="py-20 md:py-28 px-6 dot-bg relative">
+    <div class="max-w-3xl mx-auto">
+      <div class="light-card p-8 md:p-12 reveal">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <!-- Photo placeholder -->
+          <div class="flex-shrink-0">
+            <img src="agnius.png" alt="Agnius Narkevičius" class="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover" />
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-bold text-navy mb-1">Agnius Narkevičius</h3>
+            <p class="text-brand-500 font-semibold text-sm mb-4">AI Evoliucija — Lektorius</p>
+            <p class="text-gray-600 leading-relaxed mb-3">
+              Agnius nėra programuotojas. Jis dirba marketingo srityje, kuria foto ir video turinį — ir kiekvieną dieną naudoja AI savo realiame darbe. Ne teorijai, ne eksperimentams, o konkrečioms užduotims: nuo laiškų ir prezentacijų iki Excel lentelių ir kūrybinių projektų.
+            </p>
+            <p class="text-gray-600 leading-relaxed mb-3">
+              Dirbtinį intelektą pradėjo naudoti nuo pat ChatGPT išleidimo 2022 metais — jau daugiau nei 2 metus kasdien. Per tą laiką išbandė dešimtis įrankių, tačiau grįžta prie Claude, nes jis tiesiog dirba geriau.
+            </p>
+            <p class="text-gray-600 leading-relaxed">
+              Dabar padeda kolegoms ir draugams atrasti AI — ir mato tą patį „aha!" momentą kiekvieną kartą. Šiame vebinare jis parodys būtent tuos metodus, kuriuos naudoja pats. Jokios teorijos — tik tai, kas veikia. <strong>Jei aš galiu — galite ir jūs.</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="bg-navy py-20 md:py-28 px-6">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-black tracking-tight leading-[1.12] text-white mb-4 reveal">
+          Dažnai <span class="gradient-text-light">užduodami klausimai</span>
+        </h2>
+      </div>
+
+      <div class="glass-card p-6 md:p-8 reveal delay-1">
+        <div class="faq-item">
+          <div class="faq-question text-white font-semibold" onclick="toggleFaq(this)">
+            <span>Ar reikia IT žinių ar programavimo?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="faq-answer text-gray-400 text-sm leading-relaxed">
+            Tikrai ne. Jei mokate siųsti el. laišką ir naršyti internete — jau turite visus reikalingus įgūdžius. Claude veikia kaip pokalbis su žmogumi: rašote klausimą lietuviškai, gaunate atsakymą. Jokio kodo, jokių formulių. Vebinare viską parodysime žingsnis po žingsnio, pradedant nuo pačių pagrindų.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question text-white font-semibold" onclick="toggleFaq(this)">
+            <span>Kas bus jei negalėsiu dalyvauti gyvai?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="faq-answer text-gray-400 text-sm leading-relaxed">
+            PRO pakete gausite pilną vebinaro vaizdo įrašą, kurį galėsite peržiūrėti neribotą skaičių kartų, bet kuriuo metu. Sustabdyti, atsukti, pakartoti — mokytis savo tempu. Bazinis paketas apima tik gyvą dalyvavimą, todėl jei abejojate dėl laiko — rinkitės PRO ir nieko nepraleisite.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question text-white font-semibold" onclick="toggleFaq(this)">
+            <span>Kokius įrankius naudosime?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="faq-answer text-gray-400 text-sm leading-relaxed">
+            Pagrindiniai įrankiai — Claude.ai ir Claude Desktop aplikacija. <strong style="color: #60a5fa;">Nemokama versija pilnai pakanka</strong> pradėti ir sekti vebinarą. Nieko pirkti nereikia. Rekomenduojame prieš vebinarą užsiregistruoti claude.ai — tai užtrunka 2 minutes.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question text-white font-semibold" onclick="toggleFaq(this)">
+            <span>Ar tai tinka jei jau naudoju ChatGPT?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="faq-answer text-gray-400 text-sm leading-relaxed">
+            Ypač tinka. Jei naudojate ChatGPT ir kartais jaučiate, kad atsakymai per paviršutiniški, per daug „vandeniu", arba tiesiog nesuprantate kaip iš AI išgauti tikrą naudą — šis vebinaras jums. Claude yra kitas lygis: gilesnis supratimas, tikslesnės instrukcijos, mažiau „AI bullshit". Tai ne konkurentas ChatGPT — tai atnaujinimas.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question text-white font-semibold" onclick="toggleFaq(this)">
+            <span>Kiek laiko truks vebinaras?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="faq-answer text-gray-400 text-sm leading-relaxed">
+            2 valandos praktinių demonstracijų gyvai + 30 minučių klausimų ir atsakymų sesija. Iš viso apie 2,5 valandos. Jokių nuobodžių skaidrių — tik realios situacijos, rodome ekraną ir dirbame kartu.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question text-white font-semibold" onclick="toggleFaq(this)">
+            <span>Ar galiu klausti klausimų vebinaro metu?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="faq-answer text-gray-400 text-sm leading-relaxed">
+            Taip, ir tai yra viena didžiausių šio vebinaro vertių. Vebinaro pabaigoje skirsime 30 minučių gyvai atsakyti į visus jūsų klausimus — apie jūsų konkrečias situacijas, darbo užduotis, idėjas. Tai ne įrašas iš YouTube — čia gausite asmeninį atsakymą.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question text-white font-semibold" onclick="toggleFaq(this)">
+            <span>Ar Claude yra nemokamas?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="faq-answer text-gray-400 text-sm leading-relaxed">
+            Taip. Claude turi nemokamą versiją, kuri puikiai tinka pradėti ir atlikti daugumą kasdienių užduočių. Pro versija kainuoja $20/mėn., bet ji tikrai nėra būtina. Daugumai žmonių nemokama versija visiškai pakanka — ir būtent ją naudosime vebinare.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question text-white font-semibold" onclick="toggleFaq(this)">
+            <span>Ar verta jei turiu tik telefoną?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="faq-answer text-gray-400 text-sm leading-relaxed">
+            Taip. Claude turi mobilią aplikaciją (iOS ir Android), kuri veikia puikiai. Vebinarą rekomenduojame žiūrėti per kompiuterį ar planšetę, bet po jo galėsite naudoti Claude visur — ir iš telefono, pakeliui, namie, darbe.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="bg-navy-dark py-20 md:py-28 px-6 relative overflow-hidden">
+    <div class="blob-blue" style="top: -200px; right: -200px; opacity: 0.5;"></div>
+
+    <div class="max-w-3xl mx-auto text-center relative z-10">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[1.08] text-white mb-6 reveal">
+        Nustokite gaišti laiką —
+        <span class="gradient-text-light">tegul AI dirba už jus</span>
+      </h2>
+      <p class="text-gray-400 text-lg mb-10 reveal delay-1">Vebinaras prasideda už:</p>
+
+      <!-- Countdown -->
+      <div class="flex justify-center gap-3 md:gap-4 mb-12 reveal delay-2" id="countdown">
+        <div class="countdown-box">
+          <div class="countdown-number" id="cd-days">--</div>
+          <div class="countdown-label">Dienų</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-number" id="cd-hours">--</div>
+          <div class="countdown-label">Valandų</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-number" id="cd-minutes">--</div>
+          <div class="countdown-label">Minučių</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-number" id="cd-seconds">--</div>
+          <div class="countdown-label">Sekundžių</div>
+        </div>
+      </div>
+
+      <a href="#kainos" class="cta-btn text-base md:text-lg reveal delay-3" style="padding: 20px 48px;">
+        Registruotis — nuo €29
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-navy-dark py-8 px-6 border-t border-white/5">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-gray-500 text-xs">&copy; 2026 AI Evoliucija. Visos teisės saugomos.</p>
+      <div class="flex gap-6">
+        <a href="#" class="text-gray-500 text-xs hover:text-gray-300 transition-colors">Privatumo politika</a>
+        <a href="#" class="text-gray-500 text-xs hover:text-gray-300 transition-colors">Taisyklės</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ STICKY BAR ============ -->
+  <div class="sticky-bar" id="sticky-bar">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <div class="hidden sm:flex items-center gap-3">
+        <span class="text-white font-bold text-sm">AI Sprendimai Kiekvienam</span>
+        <span class="text-gray-400 text-xs">Gegužės 3 d., 18:00</span>
+      </div>
+      <div class="flex items-center gap-3 w-full sm:w-auto">
+        <span class="text-brand-400 font-bold text-sm whitespace-nowrap">nuo €29</span>
+        <a href="#kainos" class="cta-btn text-center flex-1 sm:flex-initial" style="padding: 12px 24px; font-size: 12px;">
+          Registruotis dabar
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ EXIT INTENT POPUP ============ -->
+  <div class="exit-overlay" id="exit-overlay">
+    <div class="exit-popup">
+      <button class="exit-close" onclick="closeExitPopup()">&times;</button>
+      <div class="text-center">
+        <div class="text-4xl mb-4">🤖</div>
+        <h3 class="text-2xl font-black text-navy mb-2">Palaukite!</h3>
+        <p class="text-gray-600 mb-6">Gaukite nemokamą AI produktyvumo patarimų rinkinį — tiesiai į el. paštą.</p>
+        <form id="exit-form" class="flex flex-col gap-3">
+          <input
+            type="email"
+            id="exit-email"
+            placeholder="Jūsų el. paštas"
+            required
+            class="w-full px-5 py-3 rounded-xl border-2 border-gray-200 focus:border-brand-500 focus:outline-none text-sm transition-colors"
+          >
+          <button type="submit" class="cta-btn w-full" style="padding: 14px;">
+            Gauti nemokamai
+          </button>
+        </form>
+        <!-- Hidden MailerLite embedded form for subscription -->
+        <!-- Replace YOUR_FORM_ID with your MailerLite form ID -->
+        <div class="ml-embedded" data-form="YOUR_FORM_ID" style="display:none;"></div>
+        <p class="text-gray-400 text-xs mt-3">Jokio spam'o. Tik naudinga informacija.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ JAVASCRIPT ============ -->
+  <script>
+    // --- Scroll reveal ---
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // --- Nav scroll effect ---
+    const navbar = document.getElementById('navbar');
+    const heroSection = document.querySelector('section');
+
+    function updateNav() {
+      if (window.scrollY > 60) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+
+    // --- Sticky bar ---
+    const stickyBar = document.getElementById('sticky-bar');
+    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+
+    function updateSticky() {
+      if (window.scrollY > heroBottom - 200) {
+        stickyBar.classList.add('visible');
+      } else {
+        stickyBar.classList.remove('visible');
+      }
+    }
+    window.addEventListener('scroll', updateSticky, { passive: true });
+
+    // --- FAQ accordion ---
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      const wasOpen = item.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+
+      // Toggle clicked
+      if (!wasOpen) {
+        item.classList.add('open');
+      }
+    }
+
+    // --- Countdown timer ---
+    const targetDate = new Date('2026-05-03T18:00:00+03:00').getTime();
+
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent = '0';
+        document.getElementById('cd-hours').textContent = '0';
+        document.getElementById('cd-minutes').textContent = '0';
+        document.getElementById('cd-seconds').textContent = '0';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('cd-days').textContent = days;
+      document.getElementById('cd-hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('cd-minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('cd-seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // --- Exit intent ---
+    let exitShown = false;
+
+    function showExitPopup() {
+      if (exitShown || sessionStorage.getItem('exitShown')) return;
+      exitShown = true;
+      sessionStorage.setItem('exitShown', 'true');
+      document.getElementById('exit-overlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeExitPopup() {
+      document.getElementById('exit-overlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Desktop: mouse leaves viewport
+    document.addEventListener('mouseout', (e) => {
+      if (e.clientY <= 0 && !exitShown) {
+        showExitPopup();
+      }
+    });
+
+    // Mobile: scroll up after 40%
+    let lastScrollY = 0;
+    let scrolledPast40 = false;
+
+    window.addEventListener('scroll', () => {
+      const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+
+      if (scrollPercent > 0.4) scrolledPast40 = true;
+
+      if (scrolledPast40 && window.scrollY < lastScrollY - 100 && !exitShown) {
+        showExitPopup();
+      }
+
+      lastScrollY = window.scrollY;
+    }, { passive: true });
+
+    // Close popup on overlay click
+    document.getElementById('exit-overlay').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeExitPopup();
+    });
+
+    // Exit form submit — MailerLite integration
+    document.getElementById('exit-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('exit-email').value;
+
+      // Submit to MailerLite via their embedded form
+      // The hidden ml-embedded div handles the actual subscription
+      // We also try the ml() API if available
+      if (typeof ml === 'function') {
+        ml('subscribe', { email: email });
+      }
+
+      // Also submit to the hidden MailerLite form if it rendered
+      const mlForm = document.querySelector('.ml-embedded form');
+      if (mlForm) {
+        const mlEmailInput = mlForm.querySelector('input[type="email"]');
+        if (mlEmailInput) {
+          mlEmailInput.value = email;
+          mlForm.dispatchEvent(new Event('submit', { bubbles: true }));
+        }
+      }
+
+      e.target.innerHTML = '<p class="text-green-600 font-semibold py-4">Ačiū! Patikrinkite savo el. paštą.</p>';
+      setTimeout(closeExitPopup, 2000);
+    });
+
+    // --- UTM capture ---
+    const params = new URLSearchParams(window.location.search);
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'].forEach(key => {
+      const val = params.get(key);
+      if (val) localStorage.setItem(key, val);
+    });
+  </script>
+</body>
+</html>
